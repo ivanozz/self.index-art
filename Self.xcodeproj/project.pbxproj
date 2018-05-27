@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		409A74A77C18AAD95801E9BF /* Pods_Self.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85BDACCDA33A392E12C3F96A /* Pods_Self.framework */; };
+		8406BC2F20B7B49800C22F32 /* CustomCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8406BC2E20B7B49800C22F32 /* CustomCommentCell.swift */; };
 		84127E2C20B5EEE3006AF7FA /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84127E2B20B5EEE3006AF7FA /* Reachability.swift */; };
 		84591A9920A8B0250093D65C /* UserDataDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84591A9820A8B0250093D65C /* UserDataDefaults.swift */; };
 		8474E1A62093BA1B0051261C /* SelfApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8474E1A52093BA1B0051261C /* SelfApi.swift */; };
@@ -20,10 +21,14 @@
 		84C768AF20926260005B6DCD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84C768AE20926260005B6DCD /* Assets.xcassets */; };
 		84C768B220926260005B6DCD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84C768B020926260005B6DCD /* LaunchScreen.storyboard */; };
 		84C768BD209267CE005B6DCD /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C768BC209267CE005B6DCD /* MainViewController.swift */; };
+		84CEAC9C20B73E2100138623 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CEAC9B20B73E2100138623 /* CommentsViewController.swift */; };
+		84CEAC9E20B7401200138623 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CEAC9D20B7401200138623 /* Comment.swift */; };
+		84F8BD6220B5F5FE006ACED4 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8BD6120B5F5FE006ACED4 /* NewsViewController.swift */; };
 		84FF675F209F88F0007CD782 /* AuthResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF675E209F88F0007CD782 /* AuthResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8406BC2E20B7B49800C22F32 /* CustomCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCommentCell.swift; sourceTree = "<group>"; };
 		84127E2B20B5EEE3006AF7FA /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		84591A9820A8B0250093D65C /* UserDataDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataDefaults.swift; sourceTree = "<group>"; };
 		8474E1A52093BA1B0051261C /* SelfApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfApi.swift; sourceTree = "<group>"; };
@@ -38,6 +43,9 @@
 		84C768B120926260005B6DCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84C768B320926260005B6DCD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84C768BC209267CE005B6DCD /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		84CEAC9B20B73E2100138623 /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
+		84CEAC9D20B7401200138623 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		84F8BD6120B5F5FE006ACED4 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		84FF675E209F88F0007CD782 /* AuthResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResult.swift; sourceTree = "<group>"; };
 		85BDACCDA33A392E12C3F96A /* Pods_Self.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Self.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F77CE7BE3840BB3E01991B8 /* Pods-Self.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Self.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Self/Pods-Self.debug.xcconfig"; sourceTree = "<group>"; };
@@ -76,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				84A04EB720B494EA002E5195 /* CustomNewsCell.swift */,
+				8406BC2E20B7B49800C22F32 /* CustomCommentCell.swift */,
 			);
 			path = "Custom Cells";
 			sourceTree = "<group>";
@@ -119,6 +128,7 @@
 				84C07B83209E30E700C93BDA /* ApiToken.swift */,
 				84FF675E209F88F0007CD782 /* AuthResult.swift */,
 				84C2B38720A21DFA0026797C /* News.swift */,
+				84CEAC9D20B7401200138623 /* Comment.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -127,8 +137,8 @@
 			isa = PBXGroup;
 			children = (
 				84A04EB620B494C7002E5195 /* Custom Cells */,
-				84C768AB20926260005B6DCD /* Main.storyboard */,
 				84C768B020926260005B6DCD /* LaunchScreen.storyboard */,
+				84C768AB20926260005B6DCD /* Main.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -139,6 +149,8 @@
 				84C768A720926260005B6DCD /* AppDelegate.swift */,
 				84C768A920926260005B6DCD /* LoginViewController.swift */,
 				84C768BC209267CE005B6DCD /* MainViewController.swift */,
+				84F8BD6120B5F5FE006ACED4 /* NewsViewController.swift */,
+				84CEAC9B20B73E2100138623 /* CommentsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -297,10 +309,14 @@
 				84C768BD209267CE005B6DCD /* MainViewController.swift in Sources */,
 				84C768AA20926260005B6DCD /* LoginViewController.swift in Sources */,
 				84591A9920A8B0250093D65C /* UserDataDefaults.swift in Sources */,
+				84F8BD6220B5F5FE006ACED4 /* NewsViewController.swift in Sources */,
 				84FF675F209F88F0007CD782 /* AuthResult.swift in Sources */,
 				84C768A820926260005B6DCD /* AppDelegate.swift in Sources */,
 				84C2B38820A21DFA0026797C /* News.swift in Sources */,
+				8406BC2F20B7B49800C22F32 /* CustomCommentCell.swift in Sources */,
+				84CEAC9C20B73E2100138623 /* CommentsViewController.swift in Sources */,
 				8474E1A62093BA1B0051261C /* SelfApi.swift in Sources */,
+				84CEAC9E20B7401200138623 /* Comment.swift in Sources */,
 				84127E2C20B5EEE3006AF7FA /* Reachability.swift in Sources */,
 				84C07B84209E30E700C93BDA /* ApiToken.swift in Sources */,
 			);

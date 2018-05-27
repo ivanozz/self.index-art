@@ -19,6 +19,11 @@ protocol NewsProtocol {
     func newsLoaded(list: [News])
 }
 
+protocol CommentsProtocol {
+    func commentsLoaded(list: [Comment])
+    func commentAdded(status: Bool, message: String)
+}
+
 class SelfApi {
     
     let API_URL = "https://self.index-crm.ru/tree/api/api.php"
@@ -31,6 +36,7 @@ class SelfApi {
     
     var delegate : SelfProtocol?
     var delegateNews : NewsProtocol?
+    var delegateComments : CommentsProtocol?
     
     func createTokenByLogin(login: String, password: String) {
         
@@ -117,4 +123,79 @@ class SelfApi {
     }
     
     
+    func getCommentsByNews(userId: String, token: String, newsId: String) {
+        let params: [String : String] = [
+            "module": "news",
+            "method": "getComments",
+            "user_id": userId,
+            "token": token,
+            "news_id": newsId
+        ]
+        
+        Alamofire.request(API_URL, method: .get, parameters: params, encoding: URLEncoding.default, headers: ["Authorization":
+            AUTH_HEADER]).responseJSON {
+                response in
+                var commentsList : [Comment] = []
+                if response.result.isSuccess {
+                    let commentsResponseJson : JSON = JSON(response.result.value!)
+                    
+                    for (_, comment) in commentsResponseJson["list"] {
+                        let commentOne = Comment()
+                        commentOne.id = comment["id"].stringValue
+                        commentOne.name = comment["name"].stringValue
+                        commentOne.date = comment["date"].stringValue
+                        commentOne.comment = comment["comment"].stringValue
+                        commentOne.nest = comment["nest"].intValue
+                        
+                        commentsList.append(commentOne)
+                    }
+                } else {
+                    self.auth.error = "Request wrong \(response.result.error!)"
+                }
+                self.delegateComments?.commentsLoaded(list: commentsList)
+        }
+    }
+    
+    func addCommentByNews(userId: String, token: String, newsId: String, comment: String) {
+        
+        var url = API_URL
+        
+        let paramsUrl: [String : String] = [
+            "module": "news",
+            "method": "putComment",
+            "user_id": userId,
+            "token": token,
+            "news_id": newsId
+        ]
+        
+        let params: [String : String] = [
+            "text" : comment
+        ]
+        
+        var i = 0
+        for (key, value) in paramsUrl {
+            url += i == 0 ? "?" : "&"
+            url += "\(key)=\(value)"
+            i += 1
+        }
+        
+        Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: ["Authorization":
+            AUTH_HEADER]).responseJSON {
+                response in
+                
+                var status = false
+                var message = ""
+                
+                if response.result.isSuccess {
+                    let commentResponseJson : JSON = JSON(response.result.value!)
+                    print(commentResponseJson)
+                    status = commentResponseJson["status"].boolValue
+                    message = commentResponseJson["error"].stringValue
+                } else {
+                    self.auth.error = "Request wrong \(response.result.error!)"
+                }
+                
+                self.delegateComments?.commentAdded(status: status, message: message)
+        }
+    }
 }
